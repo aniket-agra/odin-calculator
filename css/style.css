@@ -1,3 +1,16 @@
 * {
     border: 2px solid red;
 }
+
+.calculator {
+    width: 400px;
+}
+
+.display {
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px black;
+    box-shadow: -2px -2px 2px black;
+    font-size: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
