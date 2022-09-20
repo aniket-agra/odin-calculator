@@ -10,10 +10,10 @@ body {
 
 .calculator {
     /* width: 200px; */
-    border: 4px solid black;
+    background-color: bisque;
+    border: 4px solid bisque;
     border-radius: 4px;
-    box-shadow: 2px 2px 2px black;
-    box-shadow: -2px -2px 2px black;
+    box-shadow: 2px 2px 4px bisque, -2px -2px 4px  bisque;
 }
 
 .display {
