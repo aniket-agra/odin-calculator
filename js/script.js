@@ -24,8 +24,9 @@ function evalExpr(expression = currentExpr) {
         }
     }
     else {
-        alert("Invalid Input! Please try again.")
+        result = "Invalid Input! Please try again.";
     }
+    return result;
 }
 // evalExpr(["12", "+", "7", "-", "-", "*", "3"]);
 function clickFunction() {
@@ -37,8 +38,11 @@ function clickFunction() {
         displaySection.textContent = this.textContent;
     }
     currentExpr.push(clickedButton);
-    if (clickedButton === "=")
-        evalExpr();
+    if (clickedButton === "=") {
+        currentExpr.pop();
+        displaySection.textContent = evalExpr();
+    }
+        
 }
 
 let buttonSection = document.querySelector(".buttons");
@@ -46,7 +50,20 @@ for (let i = 0; i < 4; i++) {
     let buttonRow = document.createElement("div");
     for (let j = 0; j < 4; j++) {
         let buttonCol = document.createElement("button");
-        buttonCol.textContent = `${i * 4 + j}`;
+        // if column is not first put numbers 1 through 9 on rows 0 to 2
+        if (j > 0 && i <= 2) {
+            buttonCol.textContent = `${3 * (2 - i) + j}`;
+        }
+        switch(`${i}${j}`) {
+            case "00" : buttonCol.textContent = "+"; break;
+            case "10" : buttonCol.textContent = "-"; break;
+            case "20" : buttonCol.textContent = "*"; break;
+            case "30" : buttonCol.textContent = "/"; break;
+            case "31" : buttonCol.textContent = "."; break;
+            case "32" : buttonCol.textContent = "0"; break;
+            case "33" : buttonCol.textContent = "="; break;
+        }
+        buttonCol.setAttribute("id", `${i}${j}`);
         buttonCol.addEventListener('click', clickFunction);
         buttonRow.append(buttonCol);
     }
