@@ -1,7 +1,22 @@
 let displaySection = document.querySelector(".display");
 
+let currentExpr = [];
+
+function evalExpr() {
+    
+}
+
 function clickFunction() {
-    console.log(this);
+    // get clicked button
+    let clickedButton = this.textContent;
+    let clickedNumber = Number(clickedButton);
+    if (!isNaN(clickedNumber)) {
+        // show clicked value of number
+        displaySection.textContent = this.textContent;
+    }
+    currentExpr.push(clickedButton);
+    if (clickedButton === "=")
+        evalExpr();
 }
 
 let buttonSection = document.querySelector(".buttons");
