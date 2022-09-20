@@ -42,6 +42,10 @@ function clickFunction() {
         currentExpr.pop();
         displaySection.textContent = evalExpr();
     }
+    if (clickedButton === "C") {
+        currentExpr = [];
+        displaySection.textContent = "0";
+    }
         
 }
 
@@ -59,7 +63,7 @@ for (let i = 0; i < 4; i++) {
             case "10" : buttonCol.textContent = "-"; break;
             case "20" : buttonCol.textContent = "*"; break;
             case "30" : buttonCol.textContent = "/"; break;
-            case "31" : buttonCol.textContent = "."; break;
+            case "31" : buttonCol.textContent = "C"; break;
             case "32" : buttonCol.textContent = "0"; break;
             case "33" : buttonCol.textContent = "="; break;
         }
