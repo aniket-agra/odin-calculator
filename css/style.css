@@ -60,3 +60,7 @@ button {
     border:rgb(76, 106, 225);
     transition: all 0.1s;
 }
+
+button.operator {
+    background-color: rgb(60, 164, 255);
+}
