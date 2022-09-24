@@ -47,15 +47,26 @@ function clickFunction() {
     else {
         // if operator 
         // push displayed number
+        currentExpr.push(displaySection.textContent);
         // evaluate expression 
+        let result = evalExpr(currentExpr);
         // if result is number display result, empty expression array, and push result
+        if (!isNaN(result)) {
+            displaySection.textContent = result;
+            currentExpr = [result];
+        }
         // push operator
+        currentExpr.push(clickedButton);
         // set display for rewrite
         rewriteDisplay = true;
-        
     }   
     if (clickedButton === "=") {
-        // if operator is "=" display result, pop "=", push result
+        // if operator is "=" display result and allow for pushing other operators
+        // by emptying current expression as next operator push will cause displayed number 
+        // to be added to current expression
+        currentExpr = [];
+        // rewrite display
+        rewriteDisplay = true;
     }
     if (clickedButton === "C") {
         currentExpr = [];
