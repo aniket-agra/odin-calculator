@@ -1,11 +1,19 @@
 * {
-    /* border: 2px solid red; */
+    border: 2px solid red;
 }
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.head {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-weight: 500;
+    background-color:brown;
+    color: white;
 }
 
 .calculator {
@@ -24,5 +32,4 @@ body {
     display: flex;
     justify-content: flex-end;
     padding: 4px;
-    margin-bottom: 4px;
 }
