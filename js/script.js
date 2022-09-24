@@ -28,7 +28,7 @@ function clickFunction() {
     let clickedButton = this.textContent;
     let clickedNumber = Number(clickedButton);
     // check if clicked button is number or operator
-    if (!isNaN(clickedNumber)) {
+    if (this.classList[0] === "number") {
         // if number check if display to be re-written
         if (rewriteDisplay) {
             // if yes, rewrite display with clicked number, unset display for rewrite
@@ -48,7 +48,7 @@ function clickFunction() {
         let result = evalExpr(currentExpr);
         // if result is number display result, empty expression array, and push result
         if (!isNaN(result)) {
-            displaySection.textContent = result.toFixed(5);
+            displaySection.textContent = result.toFixed(2);
             currentExpr = [result];
         }
         // push operator
