@@ -8,7 +8,7 @@ function operate(operator, operand1, operand2) {
         case "+" : return operand1 + operand2;
         case "-" : return operand1 - operand2;
         case "*" : return operand1 * operand2;
-        case "/" : return operand1 / operand2;
+        case "÷" : return operand1 / operand2;
         default  : return "Operation not supported";
     }
 }
@@ -48,7 +48,7 @@ function clickFunction() {
         let result = evalExpr(currentExpr);
         // if result is number display result, empty expression array, and push result
         if (!isNaN(result)) {
-            displaySection.textContent = result;
+            displaySection.textContent = result.toFixed(5);
             currentExpr = [result];
         }
         // push operator
@@ -64,7 +64,7 @@ function clickFunction() {
         // rewrite display
         rewriteDisplay = true;
     }
-    if (clickedButton === "C") {
+    if (clickedButton === "c") {
         currentExpr = [];
         displaySection.textContent = "0";
         rewriteDisplay = true;
