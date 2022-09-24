@@ -73,8 +73,9 @@ function clickFunction() {
 }
 
 let buttonSection = document.querySelector(".buttons");
-for (let i = 0; i < 4; i++) {
+for (let i = 0; i < 5; i++) {
     let buttonRow = document.createElement("div");
+    buttonRow.setAttribute("id", `row${i}`);
     for (let j = 0; j < 4; j++) {
         let buttonCol = document.createElement("button");
         // if column is not first put numbers 1 through 9 on rows 0 to 2
@@ -95,8 +96,8 @@ for (let i = 0; i < 4; i++) {
             case "30" : buttonCol.textContent = "÷"; 
                         buttonCol.classList.add("operator");
                         break;
-            case "31" : buttonCol.textContent = "c"; 
-                        buttonCol.classList.add("operator");
+            case "31" : buttonCol.textContent = ".";
+                        buttonCol.classList.add("number");
                         break;
             case "32" : buttonCol.textContent = "0"; 
                         buttonCol.classList.add("number");
@@ -104,12 +105,17 @@ for (let i = 0; i < 4; i++) {
             case "33" : buttonCol.textContent = "="; 
                         buttonCol.classList.add("operator");
                         break;
+            case "40" : buttonCol.textContent = "c"; 
+                        buttonCol.classList.add("operator");
+                        break;
+            
         }
-        buttonCol.setAttribute("id", `${i}${j}`);
+        buttonCol.setAttribute("id", `col${j}`);
         buttonCol.addEventListener('mouseover', e => e.target.style.scale = 1.1);
         buttonCol.addEventListener('mouseleave', e => e.target.style.scale = 1);
         buttonCol.addEventListener('click', clickFunction);
-        buttonRow.append(buttonCol);
+        if (! (i == 4 && j > 0))
+            buttonRow.append(buttonCol);
     }
     buttonSection.append(buttonRow);
 }
