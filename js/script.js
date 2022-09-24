@@ -1,6 +1,7 @@
 let displaySection = document.querySelector(".display");
 
 let currentExpr = [];
+let rewriteDisplay = true;
 
 function operate(operator, operand1, operand2) {
     switch(operator) {
@@ -13,38 +14,53 @@ function operate(operator, operand1, operand2) {
 }
 
 function evalExpr(expression = currentExpr) {
-    // extract entries one by one from left 3 at a time and try to evaluate
-    let result = expression.shift();
-    // if evaluation fails NaN or undefined is returned
-    if (!isNaN(result) && result !== undefined) {
-        while (expression.length !== 0) {
-            let operator = expression.shift();
-            let operand = expression.shift();
-            result = operate(operator, Number(result), Number(operand));
-        }
-    }
-    else {
-        result = "Invalid Input! Please try again.";
-    }
-    return result;
+    // get 3 entries one by one from left and try to evaluate - do NOT update expression array
+    // expression array updated in clickFunction() 
+    let operand1 = expression[0];
+    let operator = expression[1];
+    let operand2 = expression[2];
+    let result = operate(operator, Number(operand1), Number(operand2));
+    // if (isNaN(result) && result !== undefined) {
+    //     expression = [];
+    //     result = "Invalid Input! Please try again.";
+    // }
+     return result;
 }
 // evalExpr(["12", "+", "7", "-", "-", "*", "3"]);
 function clickFunction() {
     // get clicked button
     let clickedButton = this.textContent;
     let clickedNumber = Number(clickedButton);
+    // check if clicked button is number or operator
     if (!isNaN(clickedNumber)) {
-        // show clicked value of number
-        displaySection.textContent = this.textContent;
+        // if number check if display to be re-written
+        if (rewriteDisplay) {
+            // if yes, rewrite display with clicked number, unset display for rewrite
+            displaySection.textContent = clickedButton;
+            rewriteDisplay = !rewriteDisplay;
+        }
+        else {
+            // else append to current display
+            displaySection.textContent += clickedButton;
+        }
     }
-    currentExpr.push(clickedButton);
+    else {
+        // if operator 
+        // push displayed number
+        // evaluate expression 
+        // if result is number display result, empty expression array, and push result
+        // push operator
+        // set display for rewrite
+        rewriteDisplay = true;
+        
+    }   
     if (clickedButton === "=") {
-        currentExpr.pop();
-        displaySection.textContent = evalExpr();
+        // if operator is "=" display result, pop "=", push result
     }
     if (clickedButton === "C") {
         currentExpr = [];
         displaySection.textContent = "0";
+        rewriteDisplay = true;
     }
         
 }
