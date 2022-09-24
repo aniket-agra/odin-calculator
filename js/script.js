@@ -20,13 +20,8 @@ function evalExpr(expression = currentExpr) {
     let operator = expression[1];
     let operand2 = expression[2];
     let result = operate(operator, Number(operand1), Number(operand2));
-    // if (isNaN(result) && result !== undefined) {
-    //     expression = [];
-    //     result = "Invalid Input! Please try again.";
-    // }
      return result;
 }
-// evalExpr(["12", "+", "7", "-", "-", "*", "3"]);
 function clickFunction() {
     // get clicked button
     let clickedButton = this.textContent;
@@ -88,7 +83,7 @@ for (let i = 0; i < 4; i++) {
         switch(`${i}${j}`) {
             case "00" : buttonCol.textContent = "+"; break;
             case "10" : buttonCol.textContent = "-"; break;
-            case "20" : buttonCol.textContent = "*"; break;
+            case "20" : buttonCol.textContent = "x"; break;
             case "30" : buttonCol.textContent = "/"; break;
             case "31" : buttonCol.textContent = "C"; break;
             case "32" : buttonCol.textContent = "0"; break;
