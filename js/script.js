@@ -22,6 +22,7 @@ function evalExpr(expression = currentExpr) {
     let result = operate(operator, Number(operand1), Number(operand2));
      return result;
 }
+
 function clickFunction() {
     // get clicked button
     let clickedButton = this.textContent;
@@ -90,6 +91,8 @@ for (let i = 0; i < 4; i++) {
             case "33" : buttonCol.textContent = "="; break;
         }
         buttonCol.setAttribute("id", `${i}${j}`);
+        buttonCol.addEventListener('mouseover', e => e.target.style.scale = 1.1);
+        buttonCol.addEventListener('mouseleave', e => e.target.style.scale = 1);
         buttonCol.addEventListener('click', clickFunction);
         buttonRow.append(buttonCol);
     }
