@@ -80,15 +80,30 @@ for (let i = 0; i < 4; i++) {
         // if column is not first put numbers 1 through 9 on rows 0 to 2
         if (j > 0 && i <= 2) {
             buttonCol.textContent = `${3 * (2 - i) + j}`;
+            buttonCol.classList.add("number");
         }
         switch(`${i}${j}`) {
-            case "00" : buttonCol.textContent = "+"; break;
-            case "10" : buttonCol.textContent = "-"; break;
-            case "20" : buttonCol.textContent = "x"; break;
-            case "30" : buttonCol.textContent = "÷"; break;
-            case "31" : buttonCol.textContent = "c"; break;
-            case "32" : buttonCol.textContent = "0"; break;
-            case "33" : buttonCol.textContent = "="; break;
+            case "00" : buttonCol.textContent = "+"; 
+                        buttonCol.classList.add("operator");
+                        break;
+            case "10" : buttonCol.textContent = "-"; 
+                        buttonCol.classList.add("operator");
+                        break;
+            case "20" : buttonCol.textContent = "x"; 
+                        buttonCol.classList.add("operator");
+                        break;
+            case "30" : buttonCol.textContent = "÷"; 
+                        buttonCol.classList.add("operator");
+                        break;
+            case "31" : buttonCol.textContent = "c"; 
+                        buttonCol.classList.add("operator");
+                        break;
+            case "32" : buttonCol.textContent = "0"; 
+                        buttonCol.classList.add("number");
+                        break;
+            case "33" : buttonCol.textContent = "="; 
+                        buttonCol.classList.add("operator");
+                        break;
         }
         buttonCol.setAttribute("id", `${i}${j}`);
         buttonCol.addEventListener('mouseover', e => e.target.style.scale = 1.1);
