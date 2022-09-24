@@ -33,3 +33,9 @@ body {
     justify-content: flex-end;
     padding: 4px;
 }
+
+.buttons {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: antiquewhite;
+}
