@@ -102,10 +102,10 @@ for (let i = 0; i < 5; i++) {
             case "32" : buttonCol.textContent = "0"; 
                         buttonCol.classList.add("number");
                         break;
-            case "33" : buttonCol.textContent = "="; 
+            case "33" : buttonCol.textContent = "c"; 
                         buttonCol.classList.add("operator");
                         break;
-            case "40" : buttonCol.textContent = "c"; 
+            case "40" : buttonCol.textContent = "="; 
                         buttonCol.classList.add("operator");
                         break;
             
