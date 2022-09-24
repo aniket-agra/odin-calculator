@@ -67,3 +67,14 @@ button {
 button.operator {
     background-color: rgb(60, 164, 255);
 }
+
+div#row4 {
+    display: flex;
+    justify-content: center;
+}
+
+#row4 > button {
+    flex: none;
+    border-radius: 4px;
+    padding: 4px 32px;
+}
