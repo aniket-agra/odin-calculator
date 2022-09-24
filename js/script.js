@@ -84,8 +84,8 @@ for (let i = 0; i < 4; i++) {
             case "00" : buttonCol.textContent = "+"; break;
             case "10" : buttonCol.textContent = "-"; break;
             case "20" : buttonCol.textContent = "x"; break;
-            case "30" : buttonCol.textContent = "/"; break;
-            case "31" : buttonCol.textContent = "C"; break;
+            case "30" : buttonCol.textContent = "÷"; break;
+            case "31" : buttonCol.textContent = "c"; break;
             case "32" : buttonCol.textContent = "0"; break;
             case "33" : buttonCol.textContent = "="; break;
         }
