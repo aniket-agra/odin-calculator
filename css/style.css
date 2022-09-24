@@ -39,3 +39,11 @@ body {
     border-radius: 4px;
     background-color: antiquewhite;
 }
+
+.buttons > div {
+    display: flex;
+}
+
+.buttons button {
+    flex: 1;
+}
