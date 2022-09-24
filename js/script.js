@@ -7,7 +7,7 @@ function operate(operator, operand1, operand2) {
     switch(operator) {
         case "+" : return operand1 + operand2;
         case "-" : return operand1 - operand2;
-        case "*" : return operand1 * operand2;
+        case "x" : return operand1 * operand2;
         case "÷" : return operand1 / operand2;
         default  : return "Operation not supported";
     }
