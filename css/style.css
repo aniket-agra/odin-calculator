@@ -38,7 +38,7 @@ body {
 }
 
 .buttons {
-    padding: 4px;
+    padding: 4px 8px;
     border-radius: 4px;
 }
 
@@ -69,6 +69,7 @@ button.operator {
 }
 
 div#row4 {
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
