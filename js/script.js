@@ -42,19 +42,32 @@ function clickFunction() {
     }
     else {
         // if operator 
-        // push displayed number
-        currentExpr.push(displaySection.textContent);
-        // evaluate expression 
-        let result = evalExpr(currentExpr);
-        // if result is number display result, empty expression array, and push result
-        if (!isNaN(result)) {
-            displaySection.textContent = result.toFixed(2);
-            currentExpr = [result];
-        }
-        // push operator
-        currentExpr.push(clickedButton);
-        // set display for rewrite
-        rewriteDisplay = true;
+            if (!rewriteDisplay) {
+                // if rewrite is false - user has entered a number and pushed operator
+                // push displayed number
+                currentExpr.push(displaySection.textContent);
+                // evaluate expression 
+                let result = evalExpr(currentExpr);
+                // if result is number display result, empty expression array, and push result
+                if (!isNaN(result)) {
+                    displaySection.textContent = result.toFixed(2);
+                    currentExpr = [result];
+                }
+                // set display for rewrite
+                rewriteDisplay = true;
+            }
+            // if rewrite is true - displayed number has been pushed or starting out
+            if (rewriteDisplay) {
+                // check if last entry is operator only if not starting out
+                if (currentExpr.length > 0) {
+                    // if last entry is number keep as is else pop
+                    let lastEntry = currentExpr.pop();
+                    if (!isNaN(Number(lastEntry)))
+                        currentExpr.push(lastEntry);
+                    // push current operator
+                    currentExpr.push(clickedButton);
+                }
+            }
     }   
     if (clickedButton === "=") {
         // if operator is "=" display result and allow for pushing other operators
@@ -68,8 +81,7 @@ function clickFunction() {
         currentExpr = [];
         displaySection.textContent = "0";
         rewriteDisplay = true;
-    }
-        
+    }       
 }
 
 let buttonSection = document.querySelector(".buttons");
@@ -119,3 +131,27 @@ for (let i = 0; i < 5; i++) {
     }
     buttonSection.append(buttonRow);
 }
+
+let bodySection = document.querySelector("body");
+let script = document.querySelector("script");
+
+let instructionSection = document.createElement("div");
+instructionSection.classList.add("instructions");
+let instructionList = document.createElement("ol");
+for (let i = 0; i < 3; i++) {
+    let instruction = document.createElement("li");
+    switch(i) {
+        case 0 : instruction.textContent = "Calculation starts only after entering a number. Any " +
+                                            "entries before that are ignored.";
+                break;
+        case 1 : instruction.textContent = "In case of pressing consecutive operators after " +
+                                            "entering a number, only the last operator is used. ";
+                break;  
+        case 2 : instruction.textContent = "To continue calculation after pressing '=' " +
+                                            "simply press the next operator."
+                break;
+    }
+    instructionList.appendChild(instruction);
+}
+instructionSection.appendChild(instructionList);
+bodySection.insertBefore(instructionSection, script);
