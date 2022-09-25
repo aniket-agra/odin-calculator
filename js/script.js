@@ -70,10 +70,8 @@ function clickFunction() {
             }
     }   
     if (clickedButton === "=") {
-        // if operator is "=" display result and allow for pushing other operators
-        // by emptying current expression as next operator push will cause displayed number 
-        // to be added to current expression
-        currentExpr = [];
+        // if operator is "=", pop from current expression as last pushed operator is '='
+        currentExpr.pop();
         // rewrite display
         rewriteDisplay = true;
     }
