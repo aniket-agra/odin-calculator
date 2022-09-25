@@ -2,6 +2,7 @@ let displaySection = document.querySelector(".display");
 
 let currentExpr = [];
 let rewriteDisplay = true;
+let flagDecimalError = false;
 
 function operate(operator, operand1, operand2) {
     switch(operator) {
@@ -29,16 +30,24 @@ function clickFunction() {
     let clickedNumber = Number(clickedButton);
     // check if clicked button is number or operator
     if (this.classList[0] === "number") {
+        // if decimal clicked check there's not one already present
+        if (clickedButton === ".") {
+            if (displaySection.textContent.includes(".")) {
+                alert("Sorry you can only enter 1 decimal point!");
+                flagDecimalError = true;
+            }
+        }
         // if number check if display to be re-written
-        if (rewriteDisplay) {
+        if (rewriteDisplay && !flagDecimalError) {
             // if yes, rewrite display with clicked number, unset display for rewrite
             displaySection.textContent = clickedButton;
             rewriteDisplay = !rewriteDisplay;
         }
-        else {
+        else if (!flagDecimalError) {
             // else append to current display
             displaySection.textContent += clickedButton;
         }
+        flagDecimalError = false;
     }
     else {
         // if operator 
@@ -136,7 +145,7 @@ let script = document.querySelector("script");
 let instructionSection = document.createElement("div");
 instructionSection.classList.add("instructions");
 let instructionList = document.createElement("ol");
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 4; i++) {
     let instruction = document.createElement("li");
     switch(i) {
         case 0 : instruction.textContent = "Calculation starts only after entering a number. Any " +
@@ -147,6 +156,8 @@ for (let i = 0; i < 3; i++) {
                 break;  
         case 2 : instruction.textContent = "To continue calculation after pressing '=' " +
                                             "simply press the next operator."
+                break;
+        case 3 : instruction.textContent = "Enter the preceding 0 for decimals like 0.12";
                 break;
     }
     instructionList.appendChild(instruction);
