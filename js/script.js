@@ -27,7 +27,6 @@ function evalExpr(expression = currentExpr) {
 function clickFunction() {
     // get clicked button
     let clickedButton = this.textContent;
-    let clickedNumber = Number(clickedButton);
     // check if clicked button is number or operator
     if (this.classList[0] === "number") {
         // if decimal clicked check there's not one already present
