@@ -79,3 +79,7 @@ div#row4 {
     border-radius: 4px;
     padding: 4px 32px;
 }
+
+.instructions {
+    margin : 20px;
+}
