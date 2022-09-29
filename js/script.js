@@ -89,8 +89,23 @@ function clickFunction(buttonText, buttonType) {
 }
 
 function keyFunction(e) {
-    let keyType = (!isNaN(Number(e.key)) || e.key === ".") ? "number" : "operator";
-    clickFunction(e.key, keyType);
+    if (e.key === "Shift")
+        return;
+    let keyType = "", keyText = "";
+    if (!isNaN(Number(e.key)) || e.key === ".") {
+        keyType = "number";
+        keyText = e.key;
+    }
+    if (e.key === "+" || e.key === "-" || e.key === "x" || e.key === "*" || 
+        e.key === "" || e.key === "c" || e.key === "=") {
+            keyType = "operator";
+            keyText = e.key;
+            if (e.key === "/")
+                keyText = "÷";
+            if (e.key === "*")
+                keyText = "x";
+    }
+    clickFunction(keyText, keyType);
 }
 
 window.addEventListener("keydown", e => keyFunction(e));
