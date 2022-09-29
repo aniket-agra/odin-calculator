@@ -23,14 +23,12 @@ function evalExpr(expression = currentExpr) {
     let result = operate(operator, Number(operand1), Number(operand2));
      return result;
 }
-
-function clickFunction() {
-    // get clicked button
-    let clickedButton = this.textContent;
+// accept button text and button type to also allow keyboard binding 
+function clickFunction(buttonText, buttonType) {
     // check if clicked button is number or operator
-    if (this.classList[0] === "number") {
+    if (buttonType === "number") {
         // if decimal clicked check there's not one already present
-        if (clickedButton === ".") {
+        if (buttonText === ".") {
             if (displaySection.textContent.includes(".")) {
                 alert("Sorry you can only enter 1 decimal point!");
                 flagDecimalError = true;
@@ -39,12 +37,12 @@ function clickFunction() {
         // if number check if display to be re-written
         if (rewriteDisplay && !flagDecimalError) {
             // if yes, rewrite display with clicked number, unset display for rewrite
-            displaySection.textContent = clickedButton;
+            displaySection.textContent = buttonText;
             rewriteDisplay = !rewriteDisplay;
         }
         else if (!flagDecimalError) {
             // else append to current display
-            displaySection.textContent += clickedButton;
+            displaySection.textContent += buttonText;
         }
         flagDecimalError = false;
     }
@@ -73,17 +71,17 @@ function clickFunction() {
                     if (!isNaN(Number(lastEntry)))
                         currentExpr.push(lastEntry);
                     // push current operator
-                    currentExpr.push(clickedButton);
+                    currentExpr.push(buttonText);
                 }
             }
     }   
-    if (clickedButton === "=") {
+    if (buttonText === "=") {
         // if operator is "=", pop from current expression as last pushed operator is '='
         currentExpr.pop();
         // rewrite display
         rewriteDisplay = true;
     }
-    if (clickedButton === "c") {
+    if (buttonText === "c") {
         currentExpr = [];
         displaySection.textContent = "0";
         rewriteDisplay = true;
