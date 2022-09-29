@@ -99,14 +99,17 @@ function keyFunction(e) {
     if (e.key === "+" || e.key === "-" || e.key === "x" || e.key === "*" || 
         e.key === "" || e.key === "c" || e.key === "=" || e.key === "Enter") {
             keyType = "operator";
-            keyText = e.key;
             switch (e.key) {
                 case "/" : keyText = "÷"; break;
                 case "*" : keyText = "x"; break;
                 case "Enter" : keyText = "="; break;
+                default : keyText = e.key;
             }
     }
-    clickFunction(keyText, keyType);
+    if (keyType === "number" || keyType === "operator")
+        clickFunction(keyText, keyType);
+    else 
+        alert("Invalid Key!");
 }
 
 window.addEventListener("keydown", e => keyFunction(e));
