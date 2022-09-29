@@ -88,6 +88,12 @@ function clickFunction(buttonText, buttonType) {
     }       
 }
 
+function keyFunction(e) {
+    let keyType = (!isNaN(Number(e.key)) || e.key === ".") ? "number" : "operator";
+    clickFunction(e.key, keyType);
+}
+
+window.addEventListener("keydown", e => keyFunction(e));
 let buttonSection = document.querySelector(".buttons");
 for (let i = 0; i < 5; i++) {
     let buttonRow = document.createElement("div");
