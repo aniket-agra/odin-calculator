@@ -97,13 +97,14 @@ function keyFunction(e) {
         keyText = e.key;
     }
     if (e.key === "+" || e.key === "-" || e.key === "x" || e.key === "*" || 
-        e.key === "" || e.key === "c" || e.key === "=") {
+        e.key === "" || e.key === "c" || e.key === "=" || e.key === "Enter") {
             keyType = "operator";
             keyText = e.key;
-            if (e.key === "/")
-                keyText = "÷";
-            if (e.key === "*")
-                keyText = "x";
+            switch (e.key) {
+                case "/" : keyText = "÷"; break;
+                case "*" : keyText = "x"; break;
+                case "Enter" : keyText = "="; break;
+            }
     }
     clickFunction(keyText, keyType);
 }
