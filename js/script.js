@@ -21,7 +21,7 @@ function evalExpr(expression = currentExpr) {
     let operator = expression[1];
     let operand2 = expression[2];
     let result = operate(operator, Number(operand1), Number(operand2));
-     return result;
+    return result;
 }
 // accept button text and button type to also allow keyboard binding 
 function clickFunction(buttonText, buttonType) {
@@ -56,7 +56,8 @@ function clickFunction(buttonText, buttonType) {
                 let result = evalExpr(currentExpr);
                 // if result is number display result, empty expression array, and push result
                 if (!isNaN(result)) {
-                    displaySection.textContent = result.toFixed(2);
+                    result = Number(result.toFixed(2));
+                    displaySection.textContent = result;
                     currentExpr = [result];
                 }
                 // set display for rewrite
