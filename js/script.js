@@ -97,7 +97,7 @@ function keyFunction(e) {
         keyText = e.key;
     }
     if (e.key === "+" || e.key === "-" || e.key === "x" || e.key === "*" || 
-        e.key === "" || e.key === "c" || e.key === "=" || e.key === "Enter") {
+        e.key === "/" || e.key === "c" || e.key === "=" || e.key === "Enter") {
             keyType = "operator";
             switch (e.key) {
                 case "/" : keyText = "÷"; break;
