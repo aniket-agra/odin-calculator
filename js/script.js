@@ -153,8 +153,6 @@ for (let i = 0; i < 5; i++) {
             
         }
         buttonCol.setAttribute("id", `col${j}`);
-        // buttonCol.addEventListener('mouseover', e => e.target.style.scale = 1.1);
-        // buttonCol.addEventListener('mouseleave', e => e.target.style.scale = 1);
         buttonCol.addEventListener('click', 
             e => clickFunction(e.target.textContent, e.target.classList[0]));
         if (! (i == 4 && j > 0))
